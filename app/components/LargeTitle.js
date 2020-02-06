@@ -6,7 +6,7 @@ import Colors from "../constants/Colors";
 
 class LargeTitle extends React.Component {
   static propTypes = {
-    title: PropTypes.String
+    title: PropTypes.string
   };
 
   static defaultProps = {
@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
   title: {
     marginTop: '12%',
     marginLeft: '4%',
+    color: Colors.black,
     fontWeight: 'bold',
     fontSize: 38
   }
