@@ -7,6 +7,7 @@ const backgroundColor = '#eff2f9';
 export default {
     tintColor,
     backgroundColor,
+    gray,
     black,
     white,
     activeTabColor: tintColor,
