@@ -22,10 +22,8 @@ class LargeTitle extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
   },
   title: {
-    marginTop: '12%',
     marginLeft: '4%',
     color: Colors.black,
     fontWeight: 'bold',

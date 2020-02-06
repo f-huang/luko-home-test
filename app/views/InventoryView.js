@@ -22,7 +22,7 @@ const inventoryList = [
     dateBought: Date(),
     price: 60,
     description: "",
-    photo: "https://facebook.github.io/react-native/img/tiny_logo.png",
+    photo: cartierRing,
     invoice: null,
   },
   {
@@ -31,7 +31,7 @@ const inventoryList = [
     dateBought: Date(),
     price: 2100,
     description: "",
-    photo: "https://facebook.github.io/react-native/img/tiny_logo.png",
+    photo: cartierRing,
     invoice: null,
   },
   {
@@ -40,7 +40,7 @@ const inventoryList = [
     dateBought: Date(),
     price: 10090,
     description: "",
-    photo: "https://facebook.github.io/react-native/img/tiny_logo.png",
+    photo: cartierRing,
     invoice: null,
   },
   {
@@ -49,7 +49,7 @@ const inventoryList = [
     dateBought: Date(),
     price: 13420,
     description: "",
-    photo: "https://facebook.github.io/react-native/img/tiny_logo.png",
+    photo: cartierRing,
     invoice: null,
   },
 ];
