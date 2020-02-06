@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: '100%',
     marginTop: 20,
+    paddingBottom: 20,
     backgroundColor: Colors.backgroundColor,
   }
 });
