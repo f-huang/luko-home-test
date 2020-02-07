@@ -10,7 +10,7 @@ const inventoryList = [
   {
     name: "Cartier Ring",
     category: InventoryItemCategoryEnum.JEWELLERY,
-    dateBought: Date(),
+    purchaseDate: Date(),
     price: 5780,
     description: "",
     photo: cartierRing,
@@ -19,7 +19,7 @@ const inventoryList = [
   {
     name: "Lou.Yetu Necklace",
     category: InventoryItemCategoryEnum.JEWELLERY,
-    dateBought: Date(),
+    purchaseDate: Date(),
     price: 60,
     description: "",
     photo: cartierRing,
@@ -28,7 +28,7 @@ const inventoryList = [
   {
     name: "Chanel Pearl Bracelet",
     category: InventoryItemCategoryEnum.JEWELLERY,
-    dateBought: Date(),
+    purchaseDate: Date(),
     price: 2100,
     description: "",
     photo: cartierRing,
@@ -37,7 +37,7 @@ const inventoryList = [
   {
     name: "Messika Earrings",
     category: InventoryItemCategoryEnum.JEWELLERY,
-    dateBought: Date(),
+    purchaseDate: Date(),
     price: 10090,
     description: "",
     photo: cartierRing,
@@ -46,7 +46,7 @@ const inventoryList = [
   {
     name: "Chopard Watch",
     category: InventoryItemCategoryEnum.JEWELLERY,
-    dateBought: Date(),
+    purchaseDate: Date(),
     price: 13420,
     description: "",
     photo: cartierRing,
