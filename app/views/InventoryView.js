@@ -1,59 +1,8 @@
 import React from 'react';
 import { ScrollView, View, StyleSheet } from 'react-native';
-import InventoryItemCategoryEnum from "../../model/InventoryItemCategoryEnum";
 import InventoryItem from "../components/InventoryItem";
 import Colors from "../constants/Colors";
-
-import cartierRing from "../assets/images/cartier_ring.png";
-
-// Simulate data
-const inventoryList = [
-  {
-    name: "Cartier Ring",
-    category: InventoryItemCategoryEnum.JEWELLERY,
-    purchaseDate: Date(),
-    price: 5780,
-    description: "",
-    photo: cartierRing,
-    invoice: null,
-  },
-  {
-    name: "Lou.Yetu Necklace",
-    category: InventoryItemCategoryEnum.JEWELLERY,
-    purchaseDate: Date(),
-    price: 60,
-    description: "",
-    photo: cartierRing,
-    invoice: null,
-  },
-  {
-    name: "Chanel Pearl Bracelet",
-    category: InventoryItemCategoryEnum.JEWELLERY,
-    purchaseDate: Date(),
-    price: 2100,
-    description: "",
-    photo: cartierRing,
-    invoice: null,
-  },
-  {
-    name: "Messika Earrings",
-    category: InventoryItemCategoryEnum.JEWELLERY,
-    purchaseDate: Date(),
-    price: 10090,
-    description: "",
-    photo: cartierRing,
-    invoice: null,
-  },
-  {
-    name: "Chopard Watch",
-    category: InventoryItemCategoryEnum.JEWELLERY,
-    purchaseDate: Date(),
-    price: 13420,
-    description: "",
-    photo: cartierRing,
-    invoice: null,
-  },
-];
+import PropTypes from 'prop-types';
 
 getInventoryItems = (inventoryList) => {
   let items = [];
@@ -64,11 +13,16 @@ getInventoryItems = (inventoryList) => {
 };
 
 class InventoryView extends React.Component {
-
+  static propTypes = {
+    inventoryList: PropTypes.array,
+  };
+  static defaultProps = {
+    inventoryList: []
+  };
   render() {
     return (
       <ScrollView contentContainerStyle={styles.container} automaticallyAdjustContentInsets={true}>
-        {getInventoryItems(inventoryList)}
+        {getInventoryItems(this.props.inventoryList)}
       </ScrollView>
     )
   }
@@ -80,6 +34,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     flexDirection: 'row',
     width: '100%',
+    minHeight: 800,
     marginTop: 20,
     paddingBottom: 20,
     backgroundColor: Colors.backgroundColor,
