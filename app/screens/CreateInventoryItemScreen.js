@@ -2,6 +2,7 @@ import React from 'react';
 import {ScrollView, View, Text, StyleSheet, Button} from 'react-native';
 import Colors from "../constants/Colors";
 import CreateInventoryItemForm from "../views/CreateInventoryItemForm";
+import {isStringNullOrEmpty} from "../tools/isStringNullOrEmpty";
 
 
 
@@ -42,15 +43,24 @@ class CreateInventoryItemScreen extends React.Component {
     this.props.navigation.setParams({
       handleSubmit: this.handleSubmit,
     });
-    console.log(this.childRef.form);
   }
 
   handleSubmit = () => {
     const form = this.childRef.form.getValue();
     console.log(form);
-    // if (this.isFormValid()) {
+    if (this.isFormValid()) {
       // Add item into DB.
-    // }
+    }
+  };
+
+  isFormValid = () => {
+    return (
+      !isStringNullOrEmpty(this.state.value.name)
+      && !isStringNullOrEmpty(this.state.value.category)
+      && this.state.value.price !== null
+      && this.state.value.purchaseDate !== null
+      && this.state.value.photo !== null
+    )
   };
 
   render() {
