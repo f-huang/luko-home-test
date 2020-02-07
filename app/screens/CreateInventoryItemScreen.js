@@ -1,29 +1,11 @@
 import React from 'react';
 import {ScrollView, View, Text, StyleSheet, Button} from 'react-native';
-import t from 'tcomb-form-native';
 import Colors from "../constants/Colors";
+import CreateInventoryItemForm from "../views/CreateInventoryItemForm";
 
-
-const Category = t.enums({
-  ARTS: 'Arts',
-  ELECTRONICS: 'Electronics',
-  JEWELLERY: 'Jewellery',
-  MUSIC_INSTRUMENT: 'Music Instrument'
-});
-
-const InventoryItem = t.struct({
-  name: t.String,
-  category: Category,
-  purchaseDate: t.Date,
-  price: t.Number,
-  description: t.maybe(t.String),
-  // photo: Image,
-  // invoice: t.String,
-});
 
 
 class CreateInventoryItemScreen extends React.Component {
-
   static navigationOptions = ({ navigation }) => {
     const params = navigation.state.params || {};
 
@@ -51,27 +33,32 @@ class CreateInventoryItemScreen extends React.Component {
     isFormValid: false,
   };
 
+  constructor(props) {
+    super(props);
+    this.childRef = React.createRef();
+  }
+
   componentDidMount() {
     this.props.navigation.setParams({
       handleSubmit: this.handleSubmit,
-    })
+    });
+    console.log(this.childRef.form);
   }
 
   handleSubmit = () => {
-    const form = this.form.getValue();
-
-    if (this.isFormValid()) {
+    const form = this.childRef.form.getValue();
+    console.log(form);
+    // if (this.isFormValid()) {
       // Add item into DB.
-    }
+    // }
   };
-
 
   render() {
     return (
       <ScrollView contentContainerStyle={styles.container}>
-        <t.form.Form ref={c => this.form = c}
-              type={InventoryItem}
-              value={this.state.value}/>
+        <CreateInventoryItemForm
+          ref={c => this.childRef = c}
+          value={this.state.value}/>
       </ScrollView>
 
     );
