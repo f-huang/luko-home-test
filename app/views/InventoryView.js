@@ -6,6 +6,7 @@ import Colors from "../constants/Colors";
 
 import cartierRing from "../assets/images/cartier_ring.png";
 
+// Simulate data
 const inventoryList = [
   {
     name: "Cartier Ring",
