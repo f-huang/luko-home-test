@@ -20,7 +20,6 @@ import AppNavigator from './app/navigation/AppNavigator';
 
 const App = (props) => (
   <View style={styles.container}>
-    {/*<Text>COUCOUOUC</Text>*/}
     <AppNavigator/>
   </View>
 );
