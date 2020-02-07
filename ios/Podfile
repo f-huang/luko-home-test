@@ -36,6 +36,8 @@ target 'LukoHomeTest' do
 
   pod 'react-native-image-picker', :path => '../node_modules/react-native-image-picker'
 
+  pod 'react-native-document-picker', :path => '../node_modules/react-native-document-picker'
+
   target 'LukoHomeTestTests' do
     inherit! :search_paths
     # Pods for testing
