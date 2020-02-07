@@ -114,12 +114,14 @@ class CreateInventoryItemScreen extends React.Component {
 
     return (
       <ScrollView contentContainerStyle={styles.container}>
-        <AddFileOrPhotoButton imageUri={photoUri} onChange={this.handlePhotoPicker}/>
+        <View style={styles.photoContainer}>
+          <AddFileOrPhotoButton imageUri={photoUri} onChange={this.handlePhotoPicker}/>
+        </View>
         <CreateInventoryItemForm
           ref={c => this.childRef = c}
           value={this.state.value}/>
+        <Text style={styles.smallTitle}>Documents</Text>
         <View style={styles.documentContainer}>
-          <Text style={styles.smallTitle}>Documents</Text>
           <AddFileOrPhotoButton
             imageUri={invoiceUri}
             buttonPurpose={AddFileOrPhotoButton.ButtonPurpose.ADD_FILE}
@@ -135,9 +137,10 @@ class CreateInventoryItemScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     margin: 30,
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-around',
+  },
+  photoContainer: {
+    width: '100%',
+    alignItems: 'center',
   },
   documentContainer: {
     marginTop: 20,

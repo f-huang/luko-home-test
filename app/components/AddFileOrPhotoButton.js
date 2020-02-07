@@ -29,12 +29,10 @@ class AddFileOrPhotoButton extends React.Component {
     const textLabel = this.props.buttonPurpose;
     return (
       <View style={styles.container}>
-        <View style={styles.innerContainer}>
-          <TouchableOpacity style={styles.button} onPress={this.props.onChange} alt={this.props.alt}>
-            <Image style={styles.image} source={{ uri: this.props.imageUri }}/>
-            { isStringNullOrEmpty(this.props.imageUri) &&  <Text style={styles.text}>{textLabel}</Text> }
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity style={styles.button} onPress={this.props.onChange} alt={this.props.alt}>
+          <Image style={styles.image} source={{ uri: this.props.imageUri }}/>
+          { isStringNullOrEmpty(this.props.imageUri) &&  <Text style={styles.text}>{textLabel}</Text> }
+        </TouchableOpacity>
       </View>
     );
   }
@@ -42,10 +40,6 @@ class AddFileOrPhotoButton extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
-    alignItems: 'center',
-  },
-  innerContainer: {
     position: 'relative',
     display: 'flex',
     width: 120,
