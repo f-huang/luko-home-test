@@ -9,6 +9,7 @@ import InventoryView from "../views/InventoryView";
 import InventoryItemCategoryEnum from "../../model/InventoryItemCategoryEnum";
 import cartierRing from "../assets/images/cartier_ring.png";
 import {isStringNullOrEmpty} from "../tools/isStringNullOrEmpty";
+import Colors from "../constants/Colors";
 
 // Simulate data
 const initialItems = [
@@ -82,10 +83,12 @@ class InventoryScreen extends React.Component {
           <LargeTitle title={"Inventory"}/>
           <PlusButton onPress={() => navigate('CreateInventoryItem')}/>
         </View>
-        <SearchBar style={styles.searchBar}
+        <SearchBar inputContainerStyle={styles.searchBarInput}
+                   containerStyle={styles.searchBarContainer}
                    onChangeText={this.handleSearchBarQuery}
                    value={this.state.searchBarQuery}
-                   placeholder={`Search ${this.state.inventoryList.length} items...`}/>
+                   placeholderTextColor={Colors.gray}
+                   placeholder={`Search ${this.state.inventoryList.length} items`}/>
         <InventoryView inventoryList={this.state.inventoryList}/>
       </View>
     )
@@ -106,9 +109,19 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  searchBar: {
-    backgroundColor: 'orange'
+  searchBarInput: {
+    backgroundColor: Colors.backgroundColor,
+    borderRadius: 16,
+  },
+  searchBarContainer: {
+    backgroundColor: 'white',
+    borderWidth: 0,
+    borderColor: 'white',
+    borderRadius: 8,
+    borderBottomColor: 'transparent',
+    borderTopColor: 'transparent'
   }
+
 };
 
 
