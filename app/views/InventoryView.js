@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     flexDirection: 'row',
     width: '100%',
-    minHeight: 800,
+    minHeight: 200,
     marginTop: 20,
     paddingBottom: 20,
     backgroundColor: Colors.backgroundColor,

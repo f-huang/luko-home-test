@@ -98,7 +98,6 @@ class InventoryScreen extends React.Component {
 const styles = {
   container: {
     flex: 1,
-    marginTop: '12%',
     width: '100%',
   },
   topView: {
