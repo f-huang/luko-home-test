@@ -1,6 +1,7 @@
 import React from 'react';
 import {ScrollView, View, Text, StyleSheet, Button} from 'react-native';
 import ImagePicker from 'react-native-image-picker';
+import DocumentPicker from 'react-native-document-picker';
 import Colors from "../constants/Colors";
 import CreateInventoryItemForm from "../views/CreateInventoryItemForm";
 import {isStringNullOrEmpty} from "../tools/isStringNullOrEmpty";
@@ -54,6 +55,7 @@ class CreateInventoryItemScreen extends React.Component {
       handleSubmit: this.handleSubmit,
       isFormValid: this.isFormValid,
       handlePhotoPicker: this.handlePhotoPicker,
+      handleInvoicePicker: this.handleInvoicePicker,
     });
   }
 
@@ -62,6 +64,22 @@ class CreateInventoryItemScreen extends React.Component {
     console.log(form);
     if (this.isFormValid()) {
       // Add item into DB.
+    }
+  };
+
+  async handleInvoicePicker() {
+    try {
+      this.state.value.invoice =  await DocumentPicker.pick({
+        type: [DocumentPicker.types.images, DocumentPicker.types.pdf],
+      });
+
+    } catch (err) {
+      if (DocumentPicker.isCancel(err)) {
+        // User cancelled the picker, exit any dialogs or menus and move on
+      } else {
+        alert('Unknown Error: ' + JSON.stringify(err));
+        throw err;
+      }
     }
   };
 
@@ -91,14 +109,22 @@ class CreateInventoryItemScreen extends React.Component {
   };
 
   render() {
-    const imageUri = this.state.value.photo !== null ? this.state.value.photo.uri : "";
+    const photoUri = this.state.value.photo !== null ? this.state.value.photo.uri : "";
+    const invoiceUri = this.state.value.invoice !== null ? this.state.value.invoice.uri : "";
 
     return (
       <ScrollView contentContainerStyle={styles.container}>
-        <AddFileOrPhotoButton imageUri={imageUri} onChange={this.handlePhotoPicker}/>
+        <AddFileOrPhotoButton imageUri={photoUri} onChange={this.handlePhotoPicker}/>
         <CreateInventoryItemForm
           ref={c => this.childRef = c}
           value={this.state.value}/>
+        <View style={styles.documentContainer}>
+          <Text style={styles.smallTitle}>Documents</Text>
+          <AddFileOrPhotoButton
+            imageUri={invoiceUri}
+            buttonPurpose={AddFileOrPhotoButton.ButtonPurpose.ADD_FILE}
+            onChange={this.handleInvoicePicker}/>
+        </View>
 
       </ScrollView>
 
@@ -113,7 +139,17 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'space-around',
   },
-
+  documentContainer: {
+    marginTop: 20,
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'flex-start',
+  },
+  smallTitle: {
+    color: Colors.gray,
+    fontWeight: 'bold',
+  }
 });
 
 export default CreateInventoryItemScreen;
