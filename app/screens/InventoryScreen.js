@@ -1,16 +1,21 @@
 import React from 'react';
 import { View, Text} from 'react-native';
+import { createStackNavigator } from 'react-navigation-stack';
+
 import LargeTitle from "../components/LargeTitle";
 import PlusButton from "../components/PlusButton";
 import InventoryView from "../views/InventoryView";
 
+
 class InventoryScreen extends React.Component {
   render() {
+    const { navigate } = this.props.navigation;
+
     return (
       <View style={styles.container}>
         <View style={styles.topView}>
           <LargeTitle title={"Inventory"}/>
-          <PlusButton/>
+          <PlusButton onPress={() => navigate('CreateInventoryItem')}/>
         </View>
         <InventoryView/>
       </View>

@@ -6,7 +6,7 @@ class PlusButton extends React.Component {
   render() {
     return (
       <TouchableOpacity style={styles.button}>
-        <Text style={styles.value}>+</Text>
+        <Text style={styles.value} {...this.props}>+</Text>
       </TouchableOpacity>
     )
   }

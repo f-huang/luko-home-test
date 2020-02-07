@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, View, Text } from 'react-native';
+import { Platform, Button } from 'react-native';
 
 import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
@@ -8,27 +8,33 @@ import { createStackNavigator } from 'react-navigation-stack';
 import Colors from '../constants/Colors';
 import InventoryScreen from "../screens/InventoryScreen";
 import DefaultScreen from "../screens/DefaultScreen";
+import CreateInventoryItemScreen from "../screens/CreateInventoryItemScreen";
 
 const config = Platform.select({
-    web: { headerMode: 'screen' },
-    default: {},
-  });
+  web: { headerMode: 'screen' },
+  default: {},
+});
 
 
 const DefaultStack = createStackNavigator({
-    Default: DefaultScreen,
+  Default: DefaultScreen,
 }, config);
 
 
 const InventoryStack = createStackNavigator({
-    Inventory: InventoryScreen,
+  Inventory: InventoryScreen,
+  CreateInventoryItem: {
+    screen: CreateInventoryItemScreen,
+  }
 }, config);
 
-const tabNavigator = createBottomTabNavigator({
-    Protection: DefaultStack,
-    Insurance: DefaultStack,
-    Inventory: InventoryStack,
-    Profile: DefaultStack
+InventoryStack.path = '';
+
+const TabNavigator = createBottomTabNavigator({
+  Protection: DefaultStack,
+  Insurance: DefaultStack,
+  Inventory: InventoryStack,
+  Profile: DefaultStack
 }, {
     tabBarOptions: {
     activeTintColor: Colors.activeTabColor,
@@ -36,4 +42,5 @@ const tabNavigator = createBottomTabNavigator({
   }
 });
 
-export default createAppContainer(tabNavigator);
+
+export default createAppContainer(TabNavigator);
